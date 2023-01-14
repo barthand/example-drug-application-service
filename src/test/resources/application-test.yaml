@@ -1,0 +1,2 @@
+openfda:
+  url: http://localhost:${wiremock.server.port}

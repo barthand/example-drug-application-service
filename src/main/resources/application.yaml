@@ -1,0 +1,17 @@
+openfda:
+  url: https://api.fda.gov
+  
+logging:
+  level:
+#    "jdk.event.security": info
+#    "org.apache.tomcat": info
+#    "sun.rmi.transport.tcp": info
+#    "javax.management.remote.rmi": info
+    "com.barthand": debug
+    
+    
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
