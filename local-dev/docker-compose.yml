@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb/setup.js:/docker-entrypoint-initdb.d/setup.js
+    command: --replSet rs0
