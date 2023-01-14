@@ -1,10 +1,9 @@
 package com.barthand.example.drugapplication;
 
+import com.barthand.example.drugapplication.infrastructure.BaseIntegrationTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class DrugApplicationsServiceAppTests {
+class DrugApplicationsServiceAppTests extends BaseIntegrationTest {
 
 	@Test
 	void contextLoads() {

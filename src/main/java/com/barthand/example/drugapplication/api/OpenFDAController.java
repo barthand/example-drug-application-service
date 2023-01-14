@@ -14,12 +14,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "openfda", description = "wrapper for openfda API")
+@RequestMapping("/v1")
 public class OpenFDAController {
 
     private final DrugApplicationUseCases drugApplicationUseCases;
@@ -31,9 +33,9 @@ public class OpenFDAController {
             @ApiResponse(responseCode = "400", description = "Invalid params supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "No applications are matched", content = @Content)
     })
-    public Page<OpenFDASearchResponse> getOpenFDADrugApplications(@ParameterObject @PageableDefault(size = 5) Pageable pageable,
-                                                                                         @RequestParam String manufacturerName,
-                                                                                         @RequestParam(required = false) String fdaBrandName) {
+    public Page<OpenFDASearchResponse> searchOpenFDADrugApplications(@ParameterObject @PageableDefault(size = 5) Pageable pageable,
+                                                                     @RequestParam String manufacturerName,
+                                                                     @RequestParam(required = false) String fdaBrandName) {
         return drugApplicationUseCases.searchForApplicationsSubmittedToFDA(pageable, manufacturerName, fdaBrandName);
     }
     

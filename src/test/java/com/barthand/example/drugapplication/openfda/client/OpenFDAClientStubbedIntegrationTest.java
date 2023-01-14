@@ -1,22 +1,21 @@
 package com.barthand.example.drugapplication.openfda.client;
 
+import com.barthand.example.drugapplication.infrastructure.BaseIntegrationTest;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
 @AutoConfigureWireMock(port = 0)
-@ActiveProfiles("test")
-class OpenFDAClientStubbedIntegrationTest {
+class OpenFDAClientStubbedIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private OpenFDAClient openFDAClient;
@@ -78,6 +77,11 @@ class OpenFDAClientStubbedIntegrationTest {
                         .withBodyFile("openfda-drugs-example-response.json")
                 )
         );
+    }
+
+    @DynamicPropertySource
+    static void setProperties(DynamicPropertyRegistry registry) {
+        registry.add("openfda.url", () -> "http://localhost:${wiremock.server.port}");
     }
 
 }

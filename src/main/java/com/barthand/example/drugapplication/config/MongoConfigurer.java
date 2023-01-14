@@ -1,10 +1,13 @@
 package com.barthand.example.drugapplication.config;
 
+import com.barthand.example.drugapplication.domain.DrugApplicationAggregate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.index.Index;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,7 +24,7 @@ public class MongoConfigurer {
     }
 
     public void ensureCollectionsCreated() {
-//        createCollectionIfDoesNotExist(XYZ);
+        createCollectionIfDoesNotExist(DrugApplicationAggregate.COLLECTION_NAME);
     }
 
     private void createCollectionIfDoesNotExist(String collection) {
@@ -31,8 +34,8 @@ public class MongoConfigurer {
     }
 
     private void ensureIndexesCreated() {
-//        mongoOperations.indexOps(Protocol.class)
-//                .ensureIndex(new Index().on(FIELD_XYZ, Sort.Direction.ASC));
+        mongoOperations.indexOps(DrugApplicationAggregate.class)
+                .ensureIndex(new Index().on(DrugApplicationAggregate.FIELD_MANUFACTURER_NAME, Sort.Direction.ASC));
     }
 
 }

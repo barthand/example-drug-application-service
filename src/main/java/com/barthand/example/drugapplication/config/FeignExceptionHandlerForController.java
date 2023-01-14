@@ -1,4 +1,4 @@
-package com.barthand.example.drugapplication.api;
+package com.barthand.example.drugapplication.config;
 
 import feign.FeignException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
  * Propagates {@link Exception}s Feign client indicated into the resulting servlet response. 
  */
 @RestControllerAdvice
-public class FeignExceptionHandler {
+public class FeignExceptionHandlerForController {
 
     @ExceptionHandler(FeignException.class)
     public String handleFeignStatusException(FeignException e, HttpServletResponse response) {

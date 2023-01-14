@@ -1,6 +1,6 @@
 package com.barthand.example.drugapplication.application.dto;
 
-import com.barthand.example.drugapplication.TestFixtures;
+import com.barthand.example.drugapplication.test.TestFixtures;
 import com.barthand.example.drugapplication.openfda.client.OpenFDADrugsClientResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
