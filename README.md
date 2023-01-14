@@ -58,6 +58,11 @@ docker-compose -f local-dev/docker-compose.yml -p drug-application-service down
 ./mvnw spring-boot:run
 ```
 
+## Additional features
+
+* `/actuator/prometheus` endpoint that exposes metrics for Prometheus scraping
+* cacheable OpenFDA Drugs endpoint with configurable cache eviction 
+
 ## General information
 
 ### High-level code architecture

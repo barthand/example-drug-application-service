@@ -3,3 +3,11 @@ feign:
     config:
       default:
         loggerLevel: full
+
+logging:
+  level:
+    "com.barthand": debug
+
+openfda:
+  enable-cache: false
+  cron-expression-for-cache-eviction: "*/30 * * * * *"

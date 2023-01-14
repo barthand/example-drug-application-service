@@ -1,5 +1,7 @@
 openfda:
   url: https://api.fda.gov
+  enable-cache: true
+  cron-expression-for-cache-eviction: "0 0 * * * *"
 
 management:
   endpoints:

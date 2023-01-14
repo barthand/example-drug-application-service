@@ -8,5 +8,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class OpenFDAProperties {
 
     private String url;
-
+    
+    private boolean enableCache;
+    
+    private String cronExpressionForCacheEviction;
+    
 }
